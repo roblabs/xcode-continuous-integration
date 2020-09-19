@@ -32,7 +32,7 @@ sh ${PROJECT_DIR}/xcode-continuous-integration/ci.sh
 
 ---
 
-<img width="600" alt="xcode-continuous-integration" src="https://user-images.githubusercontent.com/118112/93689119-5d855b00-fa80-11ea-9738-c3996dc5a7d7.png">
+<img width="600" alt="xcode-continuous-integration" src="https://user-images.githubusercontent.com/118112/93690228-f4571500-fa8a-11ea-923f-bccb58ef8c50.png">
 
 ---
 
