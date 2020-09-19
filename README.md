@@ -24,6 +24,9 @@ git submodule add https://github.com/roblabs/xcode-continuous-integration.git
   2.1 `Edit Scheme` > `Build` > `Pre-Actions` > `Run Script` > Add the following (assuming the proper path relative to your `${PROJECT_DIR}`)
 
 ```
+cd ${PROJECT_DIR}
+git submodule update --init --recursive
+wait
 sh ${PROJECT_DIR}/xcode-continuous-integration/ci.sh
 ```
 

@@ -4,8 +4,7 @@
 # Add to scheme with these commands
   # sh ${PROJECT_DIR}/xcode-continuous-integration/ci.sh
 
-
-# Output log name
+# MARK: - Output log name
 export PREBUILD_LOG=${PROJECT_DIR}/prebuild.log
 rm -f $PREBUILD_LOG
 
@@ -21,6 +20,7 @@ exec > $PREBUILD_LOG 2>&1
 export LANG=en_US.UTF-8   # to avoid Pod WARNING: CocoaPods requires your terminal to be using UTF-8 encoding.
 date
 
+# MARK: - metadata for Xcode Server Bots
 echo "---"
 echo "* If built using Xcode Server *Bots*, then log several key XCS_ environment variables"
 if [ "$XCS" == 1 ]
@@ -42,6 +42,7 @@ then
   echo INTEGRATION_URL = https://$(hostname)/xcode/bots/${XCS_BOT_TINY_ID}/integrations/${XCS_INTEGRATION_TINY_ID}
 fi
 
+# MARK: - metadata
 echo "---"
 echo "* metadata for your Project & Development Environment"
 echo PROJECT_DIR = $PROJECT_DIR
@@ -59,9 +60,7 @@ sw_vers                                     # macOS Version
 /usr/bin/xcodebuild -version                # xcode
 system_profiler SPDeveloperToolsDataType    # Developer tools including SDK version
 
-#
-# updates for git submodules and/or carthage
-#
+# MARK: - updates for git submodules and/or carthage
 echo PROJECT_DIR = ${PROJECT_DIR}
 cd ${PROJECT_DIR}
 
@@ -75,6 +74,7 @@ echo $PATH
 export PATH=/usr/local/bin:.:$PATH
 echo $PATH
 
+# MARK: - carthage update
 echo "---"
 echo "* `carthage update`"
 date
