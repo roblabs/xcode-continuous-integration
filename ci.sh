@@ -58,8 +58,17 @@ echo PREBUILD_LOG = $PREBUILD_LOG
 sw_vers                                     # macOS Version
 /usr/bin/xcodebuild -version                # xcode
 system_profiler SPDeveloperToolsDataType    # Developer tools including SDK version
+
+#
+# updates for git submodules and/or carthage
+#
 echo PROJECT_DIR = ${PROJECT_DIR}
 cd ${PROJECT_DIR}
+
+echo "---"
+echo "* Update submodules"
+git submodule update --init --recursive
+wait
 
 set -v
 echo $PATH
@@ -67,7 +76,7 @@ export PATH=/usr/local/bin:.:$PATH
 echo $PATH
 
 echo "---"
-echo "* `carthage metadata`"
+echo "* `carthage update`"
 date
 carthage version
 carthage update
@@ -75,4 +84,11 @@ wait
 date
 
 echo PREBUILD_LOG = $PREBUILD_LOG
-open $PREBUILD_LOG
+
+if [ "$XCS" == 1 ]
+then
+  # If XCS then do not always open the log.
+  # open $PREBUILD_LOG
+else
+  open $PREBUILD_LOG
+fi
