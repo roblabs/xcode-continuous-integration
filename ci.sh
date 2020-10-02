@@ -35,9 +35,23 @@ echo MARKETING_VERSION = $MARKETING_VERSION
 
 echo DEVELOPMENT_TEAM = $DEVELOPMENT_TEAM
 echo PREBUILD_LOG = $PREBUILD_LOG
-sw_vers                                     # macOS Version
-/usr/bin/xcodebuild -version                # xcode
-system_profiler SPDeveloperToolsDataType    # Developer tools including SDK version
+
+# MARK: - build environment
+# set verbose
+set -v
+hostname
+
+sw_vers
+
+# Xcode version & path
+/usr/bin/xcodebuild -version
+/usr/bin/xcode-select -print-path
+
+# installed SDKs
+/usr/bin/xcodebuild -showsdks -json
+system_profiler -json SPDeveloperToolsDataType
+
+set +v
 
 # MARK: - metadata for Xcode Server Bots
 # https://developer.apple.com/library/archive/documentation/IDEs/Conceptual/xcode_guide-continuous_integration/EnvironmentVariableReference.html
@@ -48,12 +62,12 @@ then
   export PREBUILD_LOG=${PROJECT_DIR}/prebuild.${XCS_BOT_TINY_ID}.${XCS_INTEGRATION_NUMBER}.log
 
   echo XCS = $XCS
+  echo XCS_INTEGRATION_NUMBER = $XCS_INTEGRATION_NUMBER
   echo XCS_BOT_NAME = $XCS_BOT_NAME
   echo XCS_BOT_ID = $XCS_BOT_ID
   echo XCS_BOT_TINY_ID = $XCS_BOT_TINY_ID
   echo XCS_INTEGRATION_ID = $XCS_INTEGRATION_ID
   echo XCS_INTEGRATION_TINY_ID = $XCS_INTEGRATION_TINY_ID
-  echo XCS_INTEGRATION_NUMBER = $XCS_INTEGRATION_NUMBER
   echo XCS_INTEGRATION_RESULT = $XCS_INTEGRATION_RESULT
   echo XCS_SOURCE_DIR = $XCS_SOURCE_DIR
   echo XCS_OUTPUT_DIR = $XCS_OUTPUT_DIR
