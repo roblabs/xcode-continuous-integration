@@ -17,7 +17,10 @@ The Xcode Server Bots documentation makes the compelling case to use Bots.  The 
 > * Broadening test coverage.
 > * Generating build and test statistics over time.
 
-[1] : https://developer.apple.com/library/archive/documentation/IDEs/Conceptual/xcode_guide-continuous_integration/index.html
+* [1] : https://developer.apple.com/library/archive/documentation/IDEs/Conceptual/xcode_guide-continuous_integration/index.html
+* [2] : https://developer.apple.com/search/?q=xcode%20server&type=Videos
+* [Xcode Server Environment Variable Reference](https://developer.apple.com/library/archive/documentation/IDEs/Conceptual/xcode_guide-continuous_integration/EnvironmentVariableReference.html)
+* [Xcode Server API Reference](https://developer.apple.com/library/archive/documentation/Xcode/Conceptual/XcodeServerAPIReference/Bots.html)
 
 This repo includes CI scripts for use in Xcode Continuous Integration *Bots*.  Also useful for manual builds.  Support for `carthage` for fetching binaries.  If you CocoaPods, you can still use this repo.  It's likely you can still use this as you will likely be using the CocoaPods `.xcworkspace`, which this can still be integrated into.
 
@@ -83,6 +86,9 @@ make iproj
 ```
 
 2. The call to `make iproj` will automatically open the Xcode Project on your development Mac.
+
+<img width="238" alt="xcs-ci" src="https://user-images.githubusercontent.com/118112/94976840-13ae6300-04cb-11eb-8f5b-49c8fb5dce0d.png">
+
 3. Change the Scheme to `CI`, which is already configured in the source for CI.  On your development Mac, choose `Product` > `Create Bot`.
 4. Add Pre-Integration Triggers
   1. `environment` - Git repo metadata & Build versions
@@ -94,9 +100,7 @@ make iproj
 
 * Example Data is generated from a project that makes use of these scripts on GitHub, [roblabs / openmaptiles-ios-demo](https://github.com/roblabs/openmaptiles-ios-demo)
 
-`metadata` for your Project & Development Environment
-
-<details open><summary> 👉 </summary>
+<details open><summary> Project & Development Environment `metadata` 👉 </summary>
 
 ```
 Sat Sep 19 13:35:34 PDT 2020
@@ -117,23 +121,25 @@ Build version 11E801a
 
 ---
 
-If built using Xcode Server *Bots*, then log several key `XCS_` environment variables
+#### `XCS` Environment Variables
 
-<details><summary> 👉 </summary>
+If built using Xcode Server *Bots*, then log several key `XCS_` environment variables.  See Apple's [Xcode Server Environment Variable Reference](https://developer.apple.com/library/archive/documentation/IDEs/Conceptual/xcode_guide-continuous_integration/EnvironmentVariableReference.html).
+
+<details><summary> Example Xcode Server Environment Variables 👉 </summary>
 
 ```
 XCS = 1
 XCS_BOT_NAME = OSM2VectorTiles Bot
-XCS_BOT_ID = drb3o4b067dec146e781b4976604a291
+XCS_BOT_ID = drb3o4b067dec6e781b4976604a291
 XCS_BOT_TINY_ID = CB1D194
-XCS_INTEGRATION_ID = drb3o4b067dec146e781b49766059a41
+XCS_INTEGRATION_ID = drb3o4b067dec6e781b4976604a291
 XCS_INTEGRATION_TINY_ID = R698E33
 XCS_INTEGRATION_NUMBER = 4
 XCS_INTEGRATION_RESULT = unknown
-XCS_SOURCE_DIR = /Users/roblabs/Library/Caches/XCSBuilder/Bots/drb3o4b067dec146e781b4976604a291/Source
-XCS_OUTPUT_DIR = /Users/roblabs/Library/Caches/XCSBuilder/Integration-drb3o4b067dec146e781b49766059a41
-XCS_DERIVED_DATA_DIR = /Users/roblabs/Library/Caches/XCSBuilder/Bots/drb3o4b067dec146e781b4976604a291/DerivedData
-XCS_XCODEBUILD_LOG = /Users/roblabs/Library/Caches/XCSBuilder/Integration-drb3o4b067dec146e781b49766059a41/xcodebuild.log
+XCS_SOURCE_DIR = /Users/roblabs/Library/Caches/XCSBuilder/Bots/drb3o4b067dec6e781b4976604a291/Source
+XCS_OUTPUT_DIR = /Users/roblabs/Library/Caches/XCSBuilder/Integration-drb3o4b067dec6e781b4976604a291
+XCS_DERIVED_DATA_DIR = /Users/roblabs/Library/Caches/XCSBuilder/Bots/drb3o4b067dec6e781b4976604a291/DerivedData
+XCS_XCODEBUILD_LOG = /Users/roblabs/Library/Caches/XCSBuilder/Integration-drb3o4b067dec6e781b4976604a291/xcodebuild.log
 INTEGRATION_URL = https://roblabs.local/xcode/bots/CB1D194/integrations/R698E33
 
 # Log data generated from this script:  ci.sh
@@ -143,21 +149,31 @@ PREBUILD_LOG = /Users/roblabs/Library/Caches/XCSBuilder/Bots/drb3o4b067dec146e78
 
 ---
 
-`carthage` metadata
+#### Xcode Server URLs
 
-<details><summary> 👉 </summary>
+You can also log some interesting URL's from the [Xcode Server API Reference](https://developer.apple.com/library/archive/documentation/Xcode/Conceptual/XcodeServerAPIReference/Bots.html)
 
 ```
-carthage version
-0.36.0
-carthage update
-*** Fetching mapbox-events-ios
-*** Downloading binary-only framework Mapbox-iOS-SDK at "https://www.mapbox.com/ios-sdk/Mapbox-iOS-SDK.json"
-*** Checking out mapbox-events-ios at "v0.10.4"
-*** Downloading binary-only framework Mapbox-iOS-SDK at "https://www.mapbox.com/ios-sdk/Mapbox-iOS-SDK.json"
-*** xcodebuild output can be found in /var/folders/1h/4r1gtygs5x76pn_n6ts5v24w0000gn/T/carthage-xcodebuild.TEen4A.log
-*** Building scheme "MapboxMobileEvents" in MapboxMobileEvents.xcodeproj
+echo "http://Bots JSON         = https://$(hostname):20343/api/bots"
+echo "http://bots/latest       = https://$(hostname)/xcode/bots/latest"
+echo "http://latest this bot   = https://$(hostname)/xcode/bots/latest/${XCS_BOT_TINY_ID}"
+echo "http://Integration JSON  = https://$(hostname)/xcode/internal/api/integrations/${XCS_INTEGRATION_ID}"
+echo "http://Download          = https://$(hostname)/xcode/internal/api/integrations/${XCS_INTEGRATION_ID}/assets"
+echo "xcbot://See Bot in Xcode = xcbot://$(hostname)/botID/${XCS_BOT_ID}/integrationID/${XCS_INTEGRATION_ID}"
 ```
+
+<details><summary> Example Xcode Server URLs 👉 </summary>
+
+```
+http://Bots JSON         = https://oldSanJuan.local:20343/api/bots
+http://bots/latest       = https://oldSanJuan.local/xcode/bots/latest
+http://latest this bot   = https://oldSanJuan.local/xcode/bots/latest/EC6DB3B
+http://Integration JSON  = https://oldSanJuan.local/xcode/internal/api/integrations/771613596b2cdb2a24eaa2108be1b1
+http://Download          = https://oldSanJuan.local/xcode/internal/api/integrations/771613596b2cdb2a24eaa2108be1b1/assets
+xcbot://See Bot in Xcode = xcbot://oldSanJuan.local/botID/dcb3a48067dec1e781b49766016a8f/integrationID/771613596b2cdb2a24eaa2108be1b1
+
+```
+
 </details>
 
 ---
@@ -168,15 +184,18 @@ How to add the `XCS` *integration* or build number into your Xcode project.
 
   * XCS builds will automatically update the build number
   * Example, If you are doing a non `XCS` build with the following values for current & marketing version then,
-      * the variable `${XCS_INTEGRATION_NUMBER}` will be `""` or null.
+      * The variable `${XCS_INTEGRATION_NUMBER}` will be `""` or null.
       * Local builds version will be `1.278.314` with a build number of `314`
-      * An example `XCS` build version for the 101*st* build will be `1.278.314101` with a build number of `314101`
+      * An example `XCS` build version for the **101** *st* build will be 1.278.314**101** with a build number of 314**101**.
   * To acheive this, hand edit all instances in file `<project>.xcodeproj/project.pbxproj`.  It is not possible to do this in Xcode directly.
 
 ```
 CURRENT_PROJECT_VERSION = "314${XCS_INTEGRATION_NUMBER}";
 MARKETING_VERSION = "1.278.314${XCS_INTEGRATION_NUMBER}";
 ```
+
+
+<img width="400" alt="xcs-integration-number" src="https://user-images.githubusercontent.com/118112/94976977-a51dd500-04cb-11eb-8bc4-34c7ca1df863.png">
 
 
 ---
@@ -209,7 +228,7 @@ Documentation for the Export Options can be found by typing:
 
 `xcodebuild -h`
 
-Here are some of those settings after running the online documentation for these settings.
+Here are some of those settings after running the online documentation for these settings.  You can review Apple [Technical Note TN2339](https://developer.apple.com/library/archive/technotes/tn2339/_index.html#//apple_ref/doc/uid/DTS40014588-CH1-WHAT_KEYS_CAN_I_PASS_TO_THE_EXPORTOPTIONSPLIST_FLAG_) for more information.
 
 `destination` : String
 >	Determines whether the app is exported locally or uploaded to Apple. Options are `export` or `upload`. The available options vary based on the selected distribution method. Defaults to `export`.
