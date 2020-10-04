@@ -11,6 +11,9 @@ echo $PATH
 set -v
 
 # MARK: - project specific build commands
+# Log the explicit path to the Workspace
+echo xed ${XCS_PRIMARY_REPO_DIR}/platform/ios/ios.xcworkspace
+
 cd ${XCS_PRIMARY_REPO_DIR}
 pwd
 
@@ -20,14 +23,19 @@ brew list --versions carthage cmake ccache pkg-config glfw3
 # Does `.netrc` exist?  What are the R/W permissions
 ls -l ~/.netrc  && stat -f '%A %N' ~/.netrc
 
-# carthage
+# This version of mapbox-gl-native is heavy with carthage
 carthage update --platform iOS --use-netrc
 wait
-
-cd ${XCS_PRIMARY_REPO_DIR}
-pwd
 
 make iproj
 wait
 
+# MARK: - Show Xcode Build Settings
+cd platform/ios # to location of ios.xcworkspace
+
 set +v
+
+xcodebuild -showBuildSettings | grep PRODUCT_BUNDLE_IDENTIFIER
+xcodebuild -showBuildSettings | grep CURRENT_PROJECT_VERSION
+xcodebuild -showBuildSettings | grep CURRENT_SEMANTIC_VERSION
+xcodebuild -showBuildSettings
