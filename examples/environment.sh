@@ -23,6 +23,12 @@ echo "http://Integration JSON  = https://$(hostname)/xcode/internal/api/integrat
 echo "http://Download          = https://$(hostname)/xcode/internal/api/integrations/${XCS_INTEGRATION_ID}/assets"
 echo "xcbot://See Bot in Xcode = xcbot://$(hostname)/botID/${XCS_BOT_ID}/integrationID/${XCS_INTEGRATION_ID}"
 
+# Git metadata
+gitBranch=$(/usr/bin/git -C ${XCS_PRIMARY_REPO_DIR} rev-parse --abbrev-ref HEAD)
+echo branch = $gitBranch
+gitSHA=$(/usr/bin/git -C ${XCS_PRIMARY_REPO_DIR} rev-parse HEAD)
+echo SHA = $gitSHA
+
 # set verbose
 set -v
 
