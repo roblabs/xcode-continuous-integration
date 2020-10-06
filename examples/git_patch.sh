@@ -1,6 +1,6 @@
 #!/bin/sh
 # Pre-Integration Script
-#   git_branch
+#   git_patch
 
 # set verbose
 set -v
@@ -10,7 +10,11 @@ cd ${XCS_PRIMARY_REPO_DIR}
 pwd
 
 # MARK: - change branch if XCS does not give you the option
-/usr/bin/git checkout --force origin/roblabs/Map
+/usr/bin/git apply \
+  ~/Downloads/patch-teamID.diff
+
+# Verify what is changed
+/usr/bin/git diff
 
 set +v
 
