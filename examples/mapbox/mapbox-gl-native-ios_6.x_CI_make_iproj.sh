@@ -20,10 +20,14 @@ pwd
 # Versions of build dependencies
 brew list --versions carthage cmake ccache pkg-config glfw3
 
+gem list xcpretty jazzy
+
 # Does `.netrc` exist?  What are the R/W permissions
 ls -l ~/.netrc  && stat -f '%A %N' ~/.netrc
 
 # This version of mapbox-gl-native is heavy with carthage
+cat Cartfile
+
 carthage update --platform iOS --use-netrc
 wait
 

@@ -20,6 +20,8 @@ pwd
 # Versions of build dependencies
 brew list --versions node cmake ccache
 
+gem list xcpretty jazzy
+
 # This version of mapbox-gl-native is heavy with submodules
 git submodule sync && git submodule update --init --recursive
 wait
