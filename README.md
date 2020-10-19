@@ -27,6 +27,18 @@ This repo includes CI scripts for use in Xcode Continuous Integration *Bots*.  A
 ### How to Use Scripts in `XCS`
 
 Choose one of these options that fits your needs.
+The Xcode Server Bots documentation makes the compelling case to use Bots.  The documentation on [Continuous integration using Xcode Server](https://help.apple.com/xcode/mac/11.4/index.html?localePath=en.lproj#/dev466720061) from Apple is the best resource for setting up your Xcode Server Bots.
+
+> In Xcode, continuous integration is the process of automating and streamlining the building, analyzing, testing, and archiving of your Mac and iOS apps, in order to ensure that they are always in a releasable state. [1]
+> The goal of continuous integration is to improve software quality, and there are a number of ways this is achieved:
+> * Catching problems quickly, easily, and early.
+> * Enhancing collaboration.
+> * Broadening test coverage.
+> * Generating build and test statistics over time.
+
+[1] : https://developer.apple.com/library/archive/documentation/IDEs/Conceptual/xcode_guide-continuous_integration/index.html
+
+This repo includes CI scripts for use in Xcode Continuous Integration *Bots*.  Also useful for manual builds.  Support for `carthage` for fetching binaries.  If you CocoaPods, you can still use this repo.  It's likely you can still use this as you will likely be using the CocoaPods `.xcworkspace`, which this can still be integrated into.
 
 #### Add as a `git submodule`
 
@@ -125,6 +137,8 @@ Build version 11E801a
 
 If built using Xcode Server *Bots*, then log several key `XCS_` environment variables.  See Apple's [Xcode Server Environment Variable Reference](https://developer.apple.com/library/archive/documentation/IDEs/Conceptual/xcode_guide-continuous_integration/EnvironmentVariableReference.html).
 
+If built using Xcode Server *Bots*, then log several key `XCS_` environment variables
+
 <details><summary> Example Xcode Server Environment Variables 👉 </summary>
 
 ```
@@ -152,15 +166,6 @@ PREBUILD_LOG = /Users/roblabs/Library/Caches/XCSBuilder/Bots/drb3o4b067dec146e78
 #### Xcode Server URLs
 
 You can also log some interesting URL's from the [Xcode Server API Reference](https://developer.apple.com/library/archive/documentation/Xcode/Conceptual/XcodeServerAPIReference/Bots.html)
-
-```
-echo "http://Bots JSON         = https://$(hostname):20343/api/bots"
-echo "http://bots/latest       = https://$(hostname)/xcode/bots/latest"
-echo "http://latest this bot   = https://$(hostname)/xcode/bots/latest/${XCS_BOT_TINY_ID}"
-echo "http://Integration JSON  = https://$(hostname)/xcode/internal/api/integrations/${XCS_INTEGRATION_ID}"
-echo "http://Download          = https://$(hostname)/xcode/internal/api/integrations/${XCS_INTEGRATION_ID}/assets"
-echo "xcbot://See Bot in Xcode = xcbot://$(hostname)/botID/${XCS_BOT_ID}/integrationID/${XCS_INTEGRATION_ID}"
-```
 
 <details><summary> Example Xcode Server URLs 👉 </summary>
 
