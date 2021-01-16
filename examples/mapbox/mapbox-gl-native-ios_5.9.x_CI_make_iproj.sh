@@ -5,6 +5,8 @@
 # MARK: - Update PATH
 echo $PATH
 export PATH=/usr/local/bin:.:$PATH
+# `brew` location on macOS for Mac Silicon
+export PATH=/opt/homebrew/bin:.:$PATH
 echo $PATH
 
 # set verbose
@@ -38,3 +40,7 @@ xcodebuild -showBuildSettings | grep PRODUCT_BUNDLE_IDENTIFIER
 xcodebuild -showBuildSettings | grep CURRENT_PROJECT_VERSION
 xcodebuild -showBuildSettings | grep CURRENT_SEMANTIC_VERSION
 xcodebuild -showBuildSettings
+
+cd ../..
+
+make iframework

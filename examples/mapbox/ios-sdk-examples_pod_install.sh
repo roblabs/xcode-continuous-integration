@@ -6,6 +6,8 @@
 # MARK: - Update PATH
 echo $PATH
 export PATH=/usr/local/bin:.:$PATH
+# `brew` location on macOS for Mac Silicon
+export PATH=/opt/homebrew/bin:.:$PATH
 echo $PATH
 
 # set verbose

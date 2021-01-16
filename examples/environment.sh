@@ -35,7 +35,11 @@ set -v
 # MARK: - build environment
 hostname
 
+# print Mac OS X operating system version information
 sw_vers
+
+# Print operating system name
+uname -a
 
 # Xcode version & path
 /usr/bin/xcodebuild -version
