@@ -105,7 +105,7 @@ then
 else
   # For local builds assume that submodule, carthage and Pods are updated manually one time.
   echo XCS = $XCS # should be `0`
-  open $PREBUILD_LOG
+  echo open $PREBUILD_LOG
 fi
 
 date
