@@ -24,22 +24,6 @@ The Xcode Server Bots documentation makes the compelling case to use Bots.  The 
 
 This repo includes CI scripts for use in Xcode Continuous Integration *Bots*.  Also useful for manual builds.  Support for `carthage` for fetching binaries.  If you CocoaPods, you can still use this repo.  It's likely you can still use this as you will likely be using the CocoaPods `.xcworkspace`, which this can still be integrated into.
 
-### How to Use Scripts in `XCS`
-
-Choose one of these options that fits your needs.
-The Xcode Server Bots documentation makes the compelling case to use Bots.  The documentation on [Continuous integration using Xcode Server](https://help.apple.com/xcode/mac/11.4/index.html?localePath=en.lproj#/dev466720061) from Apple is the best resource for setting up your Xcode Server Bots.
-
-> In Xcode, continuous integration is the process of automating and streamlining the building, analyzing, testing, and archiving of your Mac and iOS apps, in order to ensure that they are always in a releasable state. [1]
-> The goal of continuous integration is to improve software quality, and there are a number of ways this is achieved:
-> * Catching problems quickly, easily, and early.
-> * Enhancing collaboration.
-> * Broadening test coverage.
-> * Generating build and test statistics over time.
-
-[1] : https://developer.apple.com/library/archive/documentation/IDEs/Conceptual/xcode_guide-continuous_integration/index.html
-
-This repo includes CI scripts for use in Xcode Continuous Integration *Bots*.  Also useful for manual builds.  Support for `carthage` for fetching binaries.  If you CocoaPods, you can still use this repo.  It's likely you can still use this as you will likely be using the CocoaPods `.xcworkspace`, which this can still be integrated into.
-
 #### Add as a `git submodule`
 
 Add this repo as a `git submodule`.  The directory name it creates will be `xcode-continuous-integration` and the shell scripts will be in that directory.
@@ -112,7 +96,7 @@ make iproj
 
 * Example Data is generated from a project that makes use of these scripts on GitHub, [roblabs / openmaptiles-ios-demo](https://github.com/roblabs/openmaptiles-ios-demo)
 
-<details open><summary> Project & Development Environment `metadata` 👉 </summary>
+<details open><summary> Project & Development Environment `metadata` 🤖 </summary>
 
 ```
 Sat Sep 19 13:35:34 PDT 2020
@@ -137,9 +121,7 @@ Build version 11E801a
 
 If built using Xcode Server *Bots*, then log several key `XCS_` environment variables.  See Apple's [Xcode Server Environment Variable Reference](https://developer.apple.com/library/archive/documentation/IDEs/Conceptual/xcode_guide-continuous_integration/EnvironmentVariableReference.html).
 
-If built using Xcode Server *Bots*, then log several key `XCS_` environment variables
-
-<details><summary> Example Xcode Server Environment Variables 👉 </summary>
+<details><summary> Example Xcode Server Environment Variables 🤖 </summary>
 
 ```
 XCS = 1
@@ -167,7 +149,7 @@ PREBUILD_LOG = /Users/roblabs/Library/Caches/XCSBuilder/Bots/drb3o4b067dec146e78
 
 You can also log some interesting URL's from the [Xcode Server API Reference](https://developer.apple.com/library/archive/documentation/Xcode/Conceptual/XcodeServerAPIReference/Bots.html)
 
-<details><summary> Example Xcode Server URLs 👉 </summary>
+<details><summary> Example Xcode Server URLs 🤖 </summary>
 
 ```
 http://Bots JSON         = https://oldSanJuan.local:20343/api/bots
