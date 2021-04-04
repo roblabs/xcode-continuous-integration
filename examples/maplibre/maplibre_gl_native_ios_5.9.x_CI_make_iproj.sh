@@ -43,7 +43,7 @@ wait
 
 cd ${XCS_PRIMARY_REPO_DIR}/platform/ios
 
-make iproj
+make iproj CI=1
 wait
 
 # MARK: - Show Xcode Build Settings
@@ -53,7 +53,3 @@ set +v
 
 xcodebuild -showBuildSettings | grep "PRODUCT_BUNDLE_IDENTIFIER\|CURRENT_PROJECT_VERSION\|CURRENT_SEMANTIC_VERSION"
 xcodebuild -showBuildSettings
-
-cd ${XCS_PRIMARY_REPO_DIR}/platform/ios
-
-make iframework

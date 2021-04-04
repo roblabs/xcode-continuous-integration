@@ -7,6 +7,7 @@ echo This log is generated at $(date) from: environment.sh
 # MARK: - Xcode Server Environment Variable Reference
 # https://developer.apple.com/library/archive/documentation/IDEs/Conceptual/xcode_guide-continuous_integration/EnvironmentVariableReference.html
 echo XCS=${XCS}
+echo "XCS_ARCHIVE              = ${XCS_ARCHIVE}"               # The path to the .xarchive file, if archiving occurred during the integration.
 echo "XCS_BOT_NAME             = ${XCS_BOT_NAME}"
 echo "XCS_INTEGRATION_NUMBER   = ${XCS_INTEGRATION_NUMBER}"
 echo "XCS_PRIMARY_REPO_DIR     = ${XCS_PRIMARY_REPO_DIR}"
@@ -17,6 +18,7 @@ echo "XCS_PRIMARY_REPO_BRANCH  = ${XCS_PRIMARY_REPO_BRANCH}"   # Only used when 
 echo "XCS_PRIMARY_REPO_TAG     = ${XCS_PRIMARY_REPO_TAG}"      # Only used when checking out a tag.
 echo "XCS_OUTPUT_DIR           = ${XCS_OUTPUT_DIR}"
 echo "XCS_BOT_ID               = ${XCS_BOT_ID}"
+echo "XCS_PRODUCT              = ${XCS_PRODUCT}"               # The path to the .app, .ipa, or .package file, if a product was exported from an archive during the integration.
 echo "XCS_BOT_TINY_ID          = ${XCS_BOT_TINY_ID}"
 echo "http://Bots JSON         = https://$(hostname):20343/api/bots"
 echo "http://bots/latest       = https://$(hostname)/xcode/bots/latest"
