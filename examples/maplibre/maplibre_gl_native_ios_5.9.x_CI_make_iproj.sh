@@ -1,6 +1,8 @@
 #!/bin/sh
-# Pre-Integration Script
-#   maplibre_gl_native_ios_59
+# Copyright © 2020-2021 ePi Rational, Inc.. All rights reserved.
+# SPDX-License-Identifier: MIT
+# XCS Pre-Integration Script Trigger name:  maplibre_gl_native_ios_59
+echo This log is generated at $(date) from: maplibre_gl_native_ios_59.sh
 
 # MARK: - Update PATH
 echo $PATH
