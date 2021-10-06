@@ -1,8 +1,8 @@
 #!/bin/sh
 # Copyright © 2020-2021 ePi Rational, Inc.. All rights reserved.
 # SPDX-License-Identifier: MIT
-# XCS Post-Integration Script Trigger name: maplibre_gl_native_ios_CI_make_xcframework
-echo This log is generated at $(date) from: maplibre_gl_native_ios_CI_make_xcframework.sh
+# XCS Post-Integration Script Trigger name:  maplibre_gl_native_ios_CI_make_xcframework
+echo This log was generated at $(date) from: maplibre_gl_native_ios_CI_make_xcframework.sh
 
 # MARK: - Update PATH
 echo $PATH

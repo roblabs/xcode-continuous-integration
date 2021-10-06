@@ -1,6 +1,8 @@
 #!/bin/sh
-# Pre-Integration Script
-#   mapbox_gl_native_ios_59
+# Copyright © 2020-2021 ePi Rational, Inc.. All rights reserved.
+# SPDX-License-Identifier: MIT
+# XCS Pre-Integration Script Trigger name:   make_iproj
+echo This log was generated at $(date) from: make_iproj.sh
 
 # MARK: - Update PATH
 echo $PATH
@@ -45,11 +47,9 @@ wait
 # MARK: - Show Xcode Build Settings
 cd platform/ios # to location of ios.xcworkspace
 
+xcodebuild -resolvePackageDependencies
+
 set +v
 
 xcodebuild -showBuildSettings | grep "PRODUCT_BUNDLE_IDENTIFIER\|CURRENT_PROJECT_VERSION\|CURRENT_SEMANTIC_VERSION"
 xcodebuild -showBuildSettings
-
-cd ../..
-
-make iframework

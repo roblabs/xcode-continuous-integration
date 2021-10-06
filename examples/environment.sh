@@ -1,8 +1,8 @@
 #!/bin/sh
 # Copyright © 2020-2021 ePi Rational, Inc.. All rights reserved.
 # SPDX-License-Identifier: MIT
-# XCS Pre-Integration Script Trigger name:  environment
-echo This log is generated at $(date) from: environment.sh
+# XCS Pre-Integration Script Trigger name:   environment
+echo This log was generated at $(date) from: environment.sh
 
 # MARK: - Xcode Server Environment Variable Reference
 # https://developer.apple.com/library/archive/documentation/IDEs/Conceptual/xcode_guide-continuous_integration/EnvironmentVariableReference.html

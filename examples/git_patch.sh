@@ -1,6 +1,8 @@
 #!/bin/sh
-# Pre-Integration Script
-#   git_patch
+# Copyright © 2020-2021 ePi Rational, Inc.. All rights reserved.
+# SPDX-License-Identifier: MIT
+# XCS Pre-Integration Script Trigger name:   git_patch
+echo This log was generated at $(date) from: git_patch.sh
 
 # set verbose
 set -v
