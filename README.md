@@ -21,6 +21,7 @@ The Xcode Server Bots documentation makes the compelling case to use Bots.  The 
 * [2] : https://developer.apple.com/search/?q=xcode%20server&type=Videos
 * [Xcode Server Environment Variable Reference](https://developer.apple.com/library/archive/documentation/IDEs/Conceptual/xcode_guide-continuous_integration/EnvironmentVariableReference.html)
 * [Xcode Server API Reference](https://developer.apple.com/library/archive/documentation/Xcode/Conceptual/XcodeServerAPIReference/Bots.html)
+* [Verify, reveal, and delete installed toolchains]: https://help.apple.com/xcode/mac/11.4/index.html?localePath=en.lproj#/dev128b6c856 "Verify, reveal, and delete installed toolchains"
 
 This repo includes CI scripts for use in Xcode Continuous Integration *Bots*.  Also useful for manual builds.  Support for `carthage` for fetching binaries.  If you CocoaPods, you can still use this repo.  It's likely you can still use this as you will likely be using the CocoaPods `.xcworkspace`, which this can still be integrated into.
 

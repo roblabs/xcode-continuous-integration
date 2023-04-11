@@ -25,7 +25,7 @@ pwd
 brew list --versions cmake      || brew install cmake
 brew list --versions ccache     || brew install ccache
 brew list --versions pkg-config || brew install pkg-config
-brew list --versions glfw3      || brew install glfw3
+brew list --versions glfw      || brew install glfw
 
 # Ruby based dependencies
 brew list --versions ruby@2.6       || brew install ruby@2.6

@@ -36,6 +36,13 @@ echo SHA = $gitSHA
 # set verbose
 set -v
 
+# MARK: - project specific build commands
+# Log the explicit path to the Workspace
+#   Open in Visual Studio Code
+echo code ${XCS_PRIMARY_REPO_DIR}
+#   Open in Xcode
+echo xed ${XCS_PRIMARY_REPO_DIR}/platform/ios/ios.xcworkspace
+
 # MARK: - build environment
 hostname
 
